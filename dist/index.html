@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kolkata Taxi Tycoon</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"><span>ট্যাক্সি</span></div>
+        <div><p>কলকাতা</p><h1>Kolkata Taxi Co.</h1></div>
+      </div>
+      <div class="shift-card"><span>SHIFT</span><strong id="shiftTime">05:00</strong></div>
+      <div class="cash-card"><span>DAILY CASH</span><strong>₹<b id="cash">1,480</b></strong></div>
+      <button class="icon-button" id="soundButton" aria-label="Toggle sound">♪</button>
+    </header>
+
+    <section class="dashboard">
+      <aside class="side-panel">
+        <div class="avatar-card">
+          <div class="avatar"><span>RK</span><i></i></div>
+          <div><small>DRIVER</small><h2>Raju Kumar</h2><div class="stars" aria-label="4.7 stars">★★★★★ <span>4.7</span></div></div>
+        </div>
+
+        <div class="stats-card">
+          <div class="stat"><div class="stat-icon fuel">⛽</div><div><span>FUEL</span><strong><b id="fuelText">72</b>%</strong></div><div class="meter"><i id="fuelBar" style="width:72%"></i></div></div>
+          <div class="stat"><div class="stat-icon reputation">♥</div><div><span>REPUTATION</span><strong><b id="repText">88</b>%</strong></div><div class="meter rep"><i id="repBar" style="width:88%"></i></div></div>
+        </div>
+
+        <div class="fleet-card">
+          <div class="section-heading"><span>YOUR FLEET</span><button id="garageButton">GARAGE</button></div>
+          <div class="taxi-row active"><div class="mini-taxi">🚕</div><div><strong>Ambassador 01</strong><small id="taxiStatus">ON DUTY</small></div><div class="health"><i></i></div></div>
+          <div class="taxi-row locked"><div class="mini-taxi">🚕</div><div><strong>Hindustan 02</strong><small>LOCKED</small></div><div class="lock">₹25K</div></div>
+        </div>
+
+        <button class="refuel-button" id="refuelButton"><span>⛽</span> REFUEL — ₹120</button>
+      </aside>
+
+      <section class="map-panel">
+        <div class="map-toolbar">
+          <div><span class="live-dot"></span><strong>LIVE MAP</strong></div>
+          <div class="weather"><span>☀ 31°C</span><b>11:42 AM</b></div>
+        </div>
+
+        <div class="map" id="map">
+          <div class="river"><span>হুগলি নদী</span><span>HUGLI RIVER</span></div>
+          <div class="park park-a"></div><div class="park park-b"></div><div class="park park-c"></div>
+          <div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="road r4"></div>
+          <div class="road r5"></div><div class="road r6"></div><div class="road r7"></div>
+          <div class="tram-line tl1"></div><div class="tram-line tl2"></div>
+          <div class="route route-a"></div><div class="route route-b"></div>
+
+          <div class="place howrah">HOWRAH STN.</div>
+          <div class="place sealdah">SEALDAH</div>
+          <div class="place park-street">PARK STREET</div>
+          <div class="place maidan">MAIDAN</div>
+          <div class="place college">COLLEGE ST.</div>
+
+          <div class="taxi-marker" id="taxiMarker"><div class="taxi-car"><span>🚕</span></div><i></i></div>
+          <button class="passenger pin-one" data-name="Mrs. Sen" data-from="Howrah Station" data-to="Salt Lake" data-fare="320" data-tip="25" aria-label="Passenger Mrs. Sen"><span>1</span></button>
+          <button class="passenger pin-two" data-name="Arjun" data-from="College Street" data-to="Park Circus" data-fare="180" data-tip="15" aria-label="Passenger Arjun"><span>2</span></button>
+          <button class="passenger pin-three" data-name="Meera &amp; Dev" data-from="Maidan" data-to="New Town" data-fare="410" data-tip="40" aria-label="Passenger Meera and Dev"><span>3</span></button>
+        </div>
+
+        <div class="ride-dock" id="rideDock">
+          <div class="ride-info">
+            <div class="passenger-avatar"><span id="passengerInitial">MS</span></div>
+            <div><small>PICKUP REQUEST</small><h3 id="passengerName">Mrs. Sen</h3><p><b id="pickupArea">Howrah Station</b><span>→</span><b id="dropArea">Salt Lake</b></p></div>
+          </div>
+          <div class="fare-info"><small>EST. FARE</small><strong>₹<b id="fare">320</b></strong></div>
+          <button class="accept-button" id="acceptButton"><span>ACCEPT RIDE</span><kbd>↵</kbd></button>
+        </div>
+      </section>
+
+      <aside class="activity-panel">
+        <div class="section-heading"><span>SHIFT REPORT</span><button id="resetButton">RESET</button></div>
+        <div class="trip-summary">
+          <div><strong id="tripCount">3</strong><span>RIDES</span></div>
+          <div><strong id="distance">18.4</strong><span>KM</span></div>
+          <div><strong id="rating">4.8</strong><span>RATING</span></div>
+        </div>
+
+        <div class="log-heading"><span>RECENT RIDES</span><i></i></div>
+        <div class="ride-log" id="rideLog">
+          <article><div class="log-icon done">✓</div><div><strong>Esplanade → Alipore</strong><small>12:18 PM · 4.8 km</small></div><b>₹240</b></article>
+          <article><div class="log-icon done">✓</div><div><strong>Sealdah → Park Street</strong><small>11:55 AM · 3.2 km</small></div><b>₹165</b></article>
+          <article><div class="log-icon done">✓</div><div><strong>Dumdum → Shobhabazar</strong><small>11:21 AM · 6.1 km</small></div><b>₹310</b></article>
+        </div>
+
+        <div class="broadcast">
+          <div class="broadcast-head"><span>TRAFFIC ALERT</span><b>LIVE</b></div>
+          <p><i>!</i> Heavy congestion on <strong>EM Bypass</strong><br/><small>Use Park Circus route</small></p>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
